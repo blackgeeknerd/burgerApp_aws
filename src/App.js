@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.module.css'; //you can call 'classes' any name u want like 'styles'
 // import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 
@@ -190,6 +190,7 @@ class App extends Component{
     };
 
     let persons = null;
+    let btnClass = '';
 
     if (this.state.showPersons) {
       persons = 
@@ -205,30 +206,28 @@ class App extends Component{
           })}
         </div>
       );
-      //button should have red background after been toggled
-      style.backgroundColor = 'red';
-      style.color = 'black';
+          btnClass = classes.Red;
     }
     //adding style(css) classes to a variable(steps to setting Class Names dynamically)
     //let classes = ['red', 'bold'].join(' '); //this transforms to "red bold"
 
     //setting css class dynamically base on conditions
-    let classes = [];
+    let assignedClasses = [];
     if(this.state.persons.length <= 2){
-      classes.push('red'); //classes = ['red']
+      assignedClasses.push(classes.red); //classes = ['red']
     }
     if(this.state.persons.length <= 1){
-      classes.push('bold'); //classes = ['red', 'bold']
+      assignedClasses.push(classes.bold); //classes = ['red', 'bold']
     }
   
 
     return (
       
-        <div className="App">
+        <div className={classes.App}>
             <h1>We Share</h1>
-            <h3 className={classes.join(' ')}>Oya Come make We Go! </h3>
+            <h3 className={assignedClasses.join(' ')}>Oya Come make We Go! </h3>
             <button 
-            style={style}
+            className = {btnClass}
             onClick={this.togglePersonsHandler}>Toggle Persons</button> 
             {persons}
         </div>

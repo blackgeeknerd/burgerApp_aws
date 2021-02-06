@@ -3,13 +3,13 @@ import React from 'react';
 
 
 //We need to import our created css so webpack can help add it to our html file
-import './Person.css';
+import classes from './Person.module.css';
 
 
 const person = (props) => {
 
     return (
-        <div className="Person" >
+        <div className={classes.Person} >
             <p onClick={props.click} >I am {props.name} and i am {props.age} years old </p>
             <p>{props.children}</p>
             <input type="text" onChange={props.changed} value={props.name} />
